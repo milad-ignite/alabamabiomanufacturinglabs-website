@@ -35,7 +35,7 @@ export default function ContactForm() {
       </div>
       <button
         type="submit"
-        className="px-8 py-3 bg-[#1e3a8a] text-white text-sm font-medium rounded-full hover:bg-[#3b5bdb] transition-colors"
+        className="px-8 py-3.5 bg-[#101840] text-white text-sm font-medium rounded-full hover:bg-[#1e2d60] transition-colors"
       >
         Submit Your Information
       </button>
