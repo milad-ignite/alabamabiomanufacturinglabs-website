@@ -1,15 +1,37 @@
 import NewsletterForm from "@/components/NewsletterForm";
 
+const articles = [
+  {
+    title: "Sustainable Innovation With Alabama Biomanufacturing Labs",
+    authors: "Abdullah Alucozai, Luke Brazinski",
+    date: "12/19/2025",
+    readTime: "1 min read",
+    img: "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=462,fit=crop/mjEqga08k5tZplOB/auburn-mv021XRp0au1ZpN7.webp",
+    imgAlt: "Auburn campus at sunset",
+    href: "https://the-alabama-biomanufacturing-labs-newsle.beehiiv.com/p/sustainable-innovation-with-alabama-biomanufacturing-labs",
+  },
+  {
+    title: "Positioning Alabama at the Forefront of Innovation in Biopesticide Manufacturing",
+    authors: "Abdullah Alucozai, Luke Brazinski",
+    date: "8/12/2025",
+    readTime: "1 min read",
+    img: "https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=800&h=480",
+    imgAlt: "grass field",
+    href: "https://drive.google.com/file/d/1i4zIOJKqa9N4k32bIFrCDh6FFgUTM8Mz/view",
+  },
+];
+
 export default function NewslettersPage() {
   return (
     <main className="pt-16 min-h-screen flex flex-col">
 
-      {/* Subscribe section */}
-      <section className="bg-white py-16 px-4 text-center border-b border-gray-100">
+      {/* ── Subscribe section ─────────────────────────────────────────────── */}
+      <section className="bg-white py-16 px-4 text-center">
         <div className="max-w-2xl mx-auto">
           <h1 className="text-3xl sm:text-4xl font-bold text-[#1d1e20] mb-10">
             Subscribe to our newsletter
           </h1>
+
           <div className="mb-8">
             <h2 className="text-xl font-semibold text-[#1d1e20] mb-4">
               The Alabama Biomanufacturing Labs Newsletter
@@ -23,66 +45,66 @@ export default function NewslettersPage() {
               newsletter.
             </p>
           </div>
+
           <NewsletterForm />
         </div>
       </section>
 
-      {/* ABL Newsletters section */}
+      {/* ── ABL Newsletters ───────────────────────────────────────────────── */}
       <section className="bg-white py-14 px-4 flex-1">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-[1224px] mx-auto">
           <h2 className="text-4xl sm:text-5xl font-bold text-[#1d1e20] text-center mb-12">
             ABL Newsletters
           </h2>
 
-          {/* Newsletter article cards */}
+          {/* 2-column grid matching original: gap-8 (32px) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            <a
-              href="/httpsthe-alabama-biomanufacturing-labs-newslebeehiivcompsustainable-innovation-with-alabama-biomanufacturing-labs"
-              className="group block hover:shadow-md transition-shadow border border-gray-100"
-            >
-              <div className="bg-gray-100 h-48 flex items-center justify-center">
-                <span className="text-gray-400 text-sm">Newsletter Issue</span>
-              </div>
-              <div className="p-5">
-                <h3 className="text-lg font-bold text-[#1d1e20] mb-2 group-hover:text-[#416bd7] transition-colors">
-                  Sustainable Innovation With Alabama Biomanufacturing Labs
-                </h3>
-                <div className="flex items-center gap-3 text-xs text-gray-400">
-                  <span>Abdullah Alucozai, Luke Brazinski</span>
-                  <span>·</span>
-                  <span>12/19/2025 · 1 min read</span>
+            {articles.map((article) => (
+              <a
+                key={article.title}
+                href={article.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col"
+              >
+                {/* Image container — 20px bottom padding matches original */}
+                <div className="w-full pb-5">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={article.img}
+                    alt={article.imgAlt}
+                    className="w-full object-cover"
+                    style={{ height: "337px" }}
+                  />
                 </div>
-              </div>
-            </a>
 
-            <a
-              href="/positioning-alabama-at-the-forefront-of-innovation-in-biopesticide-manufacturing"
-              className="group block hover:shadow-md transition-shadow border border-gray-100"
-            >
-              <div className="h-48 overflow-hidden">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="https://images.unsplash.com/photo-1551244072-5d12893278bc?auto=format&fit=crop&w=600&h=300"
-                  alt="grass field"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-5">
-                <h3 className="text-lg font-bold text-[#1d1e20] mb-2 group-hover:text-[#416bd7] transition-colors">
-                  Positioning Alabama at the Forefront of Innovation in Biopesticide Manufacturing
-                </h3>
-                <div className="flex items-center gap-3 text-xs text-gray-400">
-                  <span>Abdullah Alucozai, Luke Brazinski</span>
-                  <span>·</span>
-                  <span>8/12/2025 · 1 min read</span>
+                {/* Content */}
+                <div className="flex-1">
+                  <h3
+                    className="font-bold text-[#1d1e20] group-hover:text-[#416bd7] transition-colors"
+                    style={{ fontSize: "24px", lineHeight: "1.3", marginBottom: "12px" }}
+                  >
+                    {article.title}
+                  </h3>
+                  <p
+                    className="text-[#1d1e20]"
+                    style={{ fontSize: "16px", marginBottom: "4px" }}
+                  >
+                    {article.authors}
+                  </p>
+                  <p className="text-[#1d1e20]" style={{ fontSize: "16px" }}>
+                    {article.date}
+                    <span className="mx-1">·</span>
+                    {article.readTime}
+                  </p>
                 </div>
-              </div>
-            </a>
+              </a>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Footer */}
+      {/* ── Footer ────────────────────────────────────────────────────────── */}
       <footer className="py-12 px-6 mt-auto" style={{ backgroundColor: "#416bd7" }}>
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-start justify-between gap-6">
           <div className="space-y-1">
