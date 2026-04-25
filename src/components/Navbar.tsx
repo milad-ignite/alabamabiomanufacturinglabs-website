@@ -6,12 +6,12 @@ import { useState } from "react";
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/#about" },
-  { label: "Services", href: "/#services" },
-  { label: "Partners", href: "/#partners" },
+  { label: "About", href: "/#about-us" },
+  { label: "Services", href: "/#what-we-do" },
+  { label: "Partners", href: "/#our-partners" },
   { label: "Cohort", href: "/#cohort" },
   { label: "Newsletters", href: "/newsletters" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Contact", href: "/#contact-us" },
 ];
 
 export default function Navbar() {
@@ -19,40 +19,33 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-100 shadow-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 shrink-0">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <polygon points="20,2 36,11 36,29 20,38 4,29 4,11" fill="#1e3a8a" opacity="0.9" />
-              <polygon points="20,6 33,13.5 33,28.5 20,36 7,28.5 7,13.5" fill="none" stroke="#38bdf8" strokeWidth="1.5" />
-              <polygon points="20,10 28,15 28,25 20,30 12,25 12,15" fill="#0ea5e9" opacity="0.7" />
-              <polygon points="20,14 25,17 25,23 20,26 15,23 15,17" fill="#38bdf8" opacity="0.9" />
-            </svg>
-            <div className="flex flex-col leading-tight">
-              <span className="text-sm font-bold text-gray-900 tracking-tight">Alabama</span>
-              <span className="text-sm font-bold text-[#1e3a8a] tracking-tight">BioManufacturing</span>
-              <span className="text-sm font-bold text-gray-900 tracking-tight">Labs</span>
-            </div>
+          <Link href="/" className="shrink-0">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,fit=crop,q=95/mjEqga08k5tZplOB/abl_banner-AzG3gw4v4aF1own7.png"
+              alt="Alabama Biomanufacturing Labs logo"
+              className="h-10 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-7">
+          <div className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => {
               const isActive =
                 link.href === "/newsletters"
                   ? pathname === "/newsletters"
-                  : link.href === "/"
-                  ? pathname === "/" && link.href === "/"
                   : false;
               return (
                 <Link
                   key={link.label}
                   href={link.href}
-                  className={`text-sm text-gray-700 hover:text-[#1e3a8a] transition-colors pb-0.5 ${
+                  className={`text-sm text-[#1d1e20] hover:text-[#416bd7] transition-colors pb-0.5 ${
                     isActive
-                      ? "border-b-2 border-gray-800 font-medium text-gray-900"
+                      ? "border-b-2 border-[#1d1e20] font-medium"
                       : ""
                   }`}
                 >
@@ -64,7 +57,7 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden p-2 rounded text-gray-600 hover:text-gray-900"
+            className="md:hidden p-2 rounded text-[#1d1e20]"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
@@ -86,7 +79,7 @@ export default function Navbar() {
             <Link
               key={link.label}
               href={link.href}
-              className="text-sm text-gray-700 hover:text-[#1e3a8a] py-1"
+              className="text-sm text-[#1d1e20] hover:text-[#416bd7] py-1"
               onClick={() => setMenuOpen(false)}
             >
               {link.label}
